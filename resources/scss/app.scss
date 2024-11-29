@@ -1,0 +1,17 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/bootstrap';
+
+$custom-colors: (
+    "primary": #0c4e80,
+    "warning": #FF9933,
+);
+
+// $custom-fonts: (
+//     7: 0.760rem,
+//     8: 0.585rem
+// );
+
+// $font-sizes: map-merge($font-sizes, $custom-fonts);
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
