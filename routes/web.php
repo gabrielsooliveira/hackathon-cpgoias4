@@ -5,10 +5,14 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/', function () {
+    return inertia('Home');
+})->name('home');
+
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
+    Route::get('/dashboard', function () {
         return inertia('Dashboard/Home');
-    })->name('home');
+    })->name('dashboard');
 
     Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 });

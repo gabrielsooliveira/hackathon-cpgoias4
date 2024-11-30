@@ -2,6 +2,7 @@ import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
 
 import LayoutDefault from './Layouts/Default.vue';
+import LayoutDashboard from './Layouts/Dashboard.vue';
 
 import { ZiggyVue } from 'ziggy';
 import { Ziggy } from './ziggy';
@@ -28,11 +29,13 @@ createInertiaApp({
             return importPage();
         };
         const page = resolvePageComponent(name, pages);
-        // page.then(module => {
-        //     if (name.startsWith('Dashboard/')) {
-        //         module.default.layout = LayoutDefault;
-        //     }
-        // });
+        page.then(module => {
+            if (name.startsWith('Dashboard/')) {
+                module.default.layout = LayoutDashboard;
+            }else{
+                module.default.layout = LayoutDefault;
+            }
+        });
         return page;
     },
     setup({ el, App, props, plugin }) {

@@ -17,26 +17,20 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => ['required', 'string', 'max:255'],
-        //     'phone' => ['required', 'string', 'max:15'],
-        //     'enterprise' => ['required', 'string', 'max:255'],
-        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-        //     'password' => ['required', 'confirmed'],
-        //     'origins_meet_id' => ['required', 'exists:origins_meet,id'],
-        // ]);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed'],
+        ]);
 
-        // $user = User::create([
-        //     'name' => $request->name,
-        //     'phone' => $request->phone,
-        //     'enterprise' => $request->enterprise,
-        //     'email' => $request->email,
-        //     'password' => Hash::make($request->password),
-        //     'origins_meet_id' => $request->origins_meet_id,
-        // ]);
-        dd($request);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->intended()->with('success', 'Usuario criado com sucesso');
     }
 }

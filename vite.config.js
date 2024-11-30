@@ -25,10 +25,10 @@ export default defineConfig({
         },
     },
     server: {
-        host: 'desafio-hackathon-cpgoias4.test',
-        port: 5174,
+        host: 'hackathon-cpgoias4.test',
+        port: 5173,
         hmr: {
-            host: 'desafio-hackathon-cpgoias4.test',
+            host: 'hackathon-cpgoias4.test',
         },
     }
 });

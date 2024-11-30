@@ -1,66 +1,184 @@
 <script setup>
+import { ref } from 'vue';
 import { Link } from "@inertiajs/vue3";
-import { Offcanvas } from 'bootstrap';
 
-const props = defineProps({
-    Items: Object,
-});
+const isExpanded = ref(localStorage.getItem("isExpanded") === "true")
 
-const closeOffcanvas = () => {
-    const offcanvasElement = document.getElementById('offcanvasMenuSidebar');
-    const offcanvasInstance = Offcanvas.getInstance(offcanvasElement) || new Offcanvas(offcanvasElement);
-    offcanvasInstance.hide();
-};
+const ToggleMenu = () => {
+	isExpanded.value = !isExpanded.value
+	localStorage.setItem("isExpanded", isExpanded.value)
+}
 </script>
 
 <template>
-    <nav class="navbar bg-primary" aria-label="Navbar principal do sistema">
-        <div class="container-fluid">
-            <button class="btn btn-sm btn-light fw-bold text-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenuSidebar" aria-controls="offcanvasMenuSidebar">
-                <font-awesome-icon icon="fa-solid fa-bars-staggered" />
-                Menu
-            </button>
-            <h2 class="navbar-brand fw-bold text-uppercase text-white">Sistema de Controle</h2>
-            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasMenuSidebar" aria-labelledby="offcanvasMenuSidebarLabel">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasMenuSidebarLabel">
-                        Menu
-                    </h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 fw-semibold">
-                        <li v-for="(item, index) in props.Items" :key="index" class="nav-item">
-                            <template v-if="!item.submenu">
-                                <Link :href="route(item.href)" class="nav-link link-primary" aria-current="page" @click="closeOffcanvas">
-                                    <font-awesome-icon :icon="item.icon"/>
-                                    <span class="ms-2">{{ item.title }}</span>
-                                </Link>
-                            </template>
-                            <template v-else>
-                                <a class="nav-link dropdown-toggle d-flex link-primary" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <font-awesome-icon :icon="item.icon" class="mt-1"/>
-                                    <span class="font-medium ms-2 me-auto">{{ item.title }}</span>
-                                </a>
-                                <ul v-if="item.submenu" class="dropdown-menu dropdown-menu-lg-end">
-                                    <li v-for="subItem in item.submenu" :key="subItem.title">
-                                        <Link :href="route(subItem.href)" class="nav-link link-primary ms-3" aria-current="page" @click="closeOffcanvas">
-                                            <font-awesome-icon :icon="subItem.icon" />
-                                            <span class="ms-2">{{ subItem.title }}</span>
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </template>
-                        </li>
-                        <li class="nav-item">
-                            <Link class="nav-link link-primary" :href="route('logout')" method="post" as="button">
-                                <font-awesome-icon icon="fa-solid fa-right-from-bracket" />
-                                <span class="ms-2">Sair</span>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+    <aside :class="`${isExpanded ? 'is-expanded' : ''}`">
+		<div class="logo">
+            <h3>Menu</h3>
+		</div>
+
+		<div class="menu-toggle-wrap">
+			<button class="menu-toggle" @click="ToggleMenu">
+				<font-awesome-icon icon="fas fa-angles-right" class="material-icons"/>
+			</button>
+		</div>
+
+        <h3>Menu</h3>
+
+        <div class="menu">
+
         </div>
-    </nav>
+
+        <div class="flex"></div>
+
+        <div class="menu">
+            <Link  class="button" :href="route('logout')" method="post" as="button">
+                <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="material-icons"/>
+                <span class="text">Sair</span>
+            </Link>
+        </div>
+	</aside>
 </template>
+
+<style lang="scss" scoped>
+aside {
+	display: flex;
+	flex-direction: column;
+	background-color: var(--dark);
+	color: var(--light);
+	width: calc(2rem + 32px);
+	overflow: hidden;
+	min-height: 100vh;
+	padding: 1rem;
+	transition: 0.2s ease-in-out;
+
+	.flex {
+		flex: 1 1 0%;
+	}
+
+	.logo {
+		margin-bottom: 1rem;
+
+		img {
+			width: 2rem;
+		}
+	}
+
+	.menu-toggle-wrap {
+		display: flex;
+		justify-content: flex-end;
+		margin-bottom: 1rem;
+		position: relative;
+		top: 0;
+		transition: 0.2s ease-in-out;
+
+		.menu-toggle {
+			transition: 0.2s ease-in-out;
+			.material-icons {
+				font-size: 2rem;
+				color: var(--light);
+				transition: 0.2s ease-out;
+			}
+
+			&:hover {
+				.material-icons {
+					color: var(--primary);
+					transform: translateX(0.5rem);
+				}
+			}
+		}
+	}
+
+	h3, .button .text {
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	h3 {
+		color: var(--grey);
+		font-size: 0.875rem;
+		margin-bottom: 0.5rem;
+		text-transform: uppercase;
+	}
+
+	.menu {
+		margin: 0 -1rem;
+
+		.button {
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+
+			transition: 0.2s ease-in-out;
+			padding: 0.5rem 1rem;
+
+			.material-icons {
+				font-size: 2rem;
+				color: var(--light);
+				transition: 0.2s ease-in-out;
+			}
+			.text {
+				color: var(--light);
+				transition: 0.2s ease-in-out;
+			}
+
+			&:hover {
+				background-color: var(--dark-alt);
+
+				.material-icons, .text {
+					color: var(--primary);
+				}
+			}
+
+			&.router-link-exact-active {
+				background-color: var(--dark-alt);
+				border-right: 5px solid var(--primary);
+
+				.material-icons, .text {
+					color: var(--primary);
+				}
+			}
+		}
+	}
+
+	.footer {
+		opacity: 0;
+		transition: opacity 0.3s ease-in-out;
+
+		p {
+			font-size: 0.875rem;
+			color: var(--grey);
+		}
+	}
+
+	&.is-expanded {
+		width: var(--sidebar-width);
+
+		.menu-toggle-wrap {
+			top: -3rem;
+
+			.menu-toggle {
+				transform: rotate(-180deg);
+			}
+		}
+
+		h3, .button .text {
+			opacity: 1;
+		}
+
+		.button {
+			.material-icons {
+				margin-right: 1rem;
+			}
+		}
+
+		.footer {
+			opacity: 0;
+		}
+	}
+
+	@media (max-width: 1024px) {
+		position: absolute;
+		z-index: 99;
+	}
+}
+</style>

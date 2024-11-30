@@ -18,12 +18,6 @@ class LoginController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        $user = User::where('email', $request->email)->where('status', 1)->first();
-
-        if (!$user) {
-            return back()->with('error', 'Sua conta está desativada. Entre em contato com a administração do sistema.');
-        }
-
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->intended()->with('success', 'Login realizado com sucesso');
