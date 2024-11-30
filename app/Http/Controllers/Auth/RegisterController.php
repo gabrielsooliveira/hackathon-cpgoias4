@@ -31,6 +31,6 @@ class RegisterController extends Controller
 
         Auth::login($user);
 
-        return redirect()->intended()->with('success', 'Usuario criado com sucesso');
+        return redirect()->route('dashboard')->with('success', 'Usuario criado com sucesso');
     }
 }

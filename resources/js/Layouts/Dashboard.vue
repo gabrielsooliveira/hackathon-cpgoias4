@@ -15,10 +15,10 @@ import Toast from '@/js/Components/Toast.vue';
 
 <style lang="scss">
 :root {
-	--primary: #4ade80;
-	--primary-alt: #22c55e;
+	--primary: #77c1e9;
+	--primary-alt: #3cb7c7;
 	--grey: #64748b;
-	--dark: #101111;
+	--dark: #2a3131;
 	--dark-alt: #334155;
 	--light: #f1f5f9;
 	--sidebar-width: 300px;

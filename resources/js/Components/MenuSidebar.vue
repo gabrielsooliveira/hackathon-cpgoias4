@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { Link } from "@inertiajs/vue3";
+import logoUrl from '@/assets/images/imagem_logo_solo.png';
 
 const isExpanded = ref(localStorage.getItem("isExpanded") === "true")
 
@@ -13,7 +14,7 @@ const ToggleMenu = () => {
 <template>
     <aside :class="`${isExpanded ? 'is-expanded' : ''}`">
 		<div class="logo">
-            <h3>Menu</h3>
+            <img :src="logoUrl" alt="Irrigago"/>
 		</div>
 
 		<div class="menu-toggle-wrap">
@@ -31,7 +32,7 @@ const ToggleMenu = () => {
         <div class="flex"></div>
 
         <div class="menu">
-            <Link  class="button" :href="route('logout')" method="post" as="button">
+            <Link class="button" :href="route('logout')" method="post" as="button">
                 <font-awesome-icon icon="fa-solid fa-right-from-bracket" class="material-icons"/>
                 <span class="text">Sair</span>
             </Link>

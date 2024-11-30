@@ -1,9 +1,9 @@
 <script setup>
 import { useForm, Head, Link } from '@inertiajs/vue3';
+import ImageSrc from '@/assets/images/imagem_registro.svg';
 
 const form = useForm({
     name: '',
-    phone: '',
     email: '',
     password: '',
     password_confirmation: '',
@@ -13,24 +13,19 @@ const form = useForm({
 <template>
     <Head title="Registro"></Head>
     <div class="container">
-        <div class="row mt-5">
-            <div class="col-lg-6 mb-4">
-                <h2 class="fw-bold text-secondary">Registre-se agora mesmo <span class="text-primary">!</span></h2>
+        <div class="row mt-5 py-5">
+            <div class="col-lg-6 mb-4 pe-5">
+                <img class="img-fluid" :src="ImageSrc" loading="lazy" alt="Imagem Registro">
             </div>
             <div class="col-lg-6 mb-1">
                 <div class="p-5 card bg-body-tertiary">
+                    <h2 class="fw-bold text-primary mt-4 text-center">Registre-se agora mesmo <span class="text-secondary">!</span></h2>
                     <div class="form-signin w-100">
                         <form @submit.prevent="form.post(route('register'))">
                             <div>
                                 <label class="form-label mt-2" for="name">Nome</label>
                                 <input class="form-control" id="name" v-model="form.name" type="text" required autocomplete="name" />
                                 <span v-if="form.errors.name">{{ form.errors.name }}</span>
-                            </div>
-
-                            <div>
-                                <label class="form-label mt-2" for="phone">Telefone</label>
-                                <input class="form-control" id="phone" v-model="form.phone" type="text" required autocomplete="phone" />
-                                <span v-if="form.errors.phone">{{ form.errors.phone }}</span>
                             </div>
 
                             <div>
@@ -55,9 +50,7 @@ const form = useForm({
                         </form>
                     </div>
 
-                    <div class="mt-3">
-                        <Link :href="route('login')" aria-label="login">Já possue conta? Faça login</Link>
-                    </div>
+                    <Link class="mt-4 link-dark" :href="route('login')" aria-label="login">Já possue conta? Faça login</Link>
                 </div>
             </div>
         </div>
