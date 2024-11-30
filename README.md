@@ -3,15 +3,11 @@
 Este projeto é uma solução integrada que utiliza dados do CLIMWAT e do CROPWAT para calcular as necessidades hídricas das culturas e os requisitos de irrigação, considerando as variáveis de solo, clima e tipo de cultura. A solução ajusta automaticamente as necessidades e os cronogramas de irrigação com base em dados em tempo real, garantindo a eficiência no uso da água. Além disso, envolve a extração de água do lençol freático, o monitoramento contínuo das condições do solo e das plantas, e a aplicação precisa de água por meio de um sistema de irrigação por gotejamento, otimizando o consumo e o manejo dos recursos hídricos. Este projeto foi desenvolvido para o hackathon da Campus Party Goiás.
 
 <p align="center">
-  <img src="![image](https://github.com/user-attachments/assets/88cb9710-9297-4c83-9290-87afaeae77d0)" alt="image painel"/>
-  <img src="![image](https://github.com/user-attachments/assets/57047879-64fb-4ecb-b9d3-9adbb5feadec)
-" alt="image-login"/>
-  <img src="![image](https://github.com/user-attachments/assets/4dd180b2-19fa-4b88-be46-eb14972881d2)
-" alt="image home"/>
-  <img src="![image](https://github.com/user-attachments/assets/bba5f637-755c-454d-83d6-e705b838059a)
-" alt="image chat"/>
+  <img src="https://github.com/user-attachments/assets/88cb9710-9297-4c83-9290-87afaeae77d0" alt="image painel"/>
+  <img src="https://github.com/user-attachments/assets/57047879-64fb-4ecb-b9d3-9adbb5feadec" alt="image-login"/>
+  <img src="https://github.com/user-attachments/assets/4dd180b2-19fa-4b88-be46-eb14972881d2" alt="image home"/>
+  <img src="https://github.com/user-attachments/assets/bba5f637-755c-454d-83d6-e705b838059a" alt="image chat"/>
 </p>
-
 
 ## Requisitos
 
