@@ -5,6 +5,7 @@ import ImageSrc from '@/assets/images/imagem_registro.svg';
 const form = useForm({
     name: '',
     email: '',
+    address: '',
     password: '',
     password_confirmation: '',
 });
@@ -21,7 +22,7 @@ const form = useForm({
                 <div class="p-5 card bg-body-tertiary">
                     <h2 class="fw-bold text-primary mt-4 text-center">Registre-se agora mesmo <span class="text-secondary">!</span></h2>
                     <div class="form-signin w-100">
-                        <form @submit.prevent="form.post(route('register'))">
+                        <form @submit.prevent="form.post(route('register_store'))">
                             <div>
                                 <label class="form-label mt-2" for="name">Nome</label>
                                 <input class="form-control" id="name" v-model="form.name" type="text" required autocomplete="name" />
@@ -32,6 +33,12 @@ const form = useForm({
                                 <label class="form-label mt-2" for="email">Email</label>
                                 <input class="form-control" id="email" v-model="form.email" type="email" required autocomplete="email" />
                                 <span v-if="form.errors.email">{{ form.errors.email }}</span>
+                            </div>
+
+                            <div>
+                                <label class="form-label mt-2" for="address">Endereço</label>
+                                <input class="form-control" id="address" v-model="form.address" type="address" required autocomplete="address" />
+                                <span v-if="form.errors.address">{{ form.errors.address }}</span>
                             </div>
 
                             <div>

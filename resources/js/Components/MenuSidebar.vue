@@ -26,7 +26,22 @@ const ToggleMenu = () => {
         <h3>Menu</h3>
 
         <div class="menu">
-
+            <Link class="button" :href="route('dashboard')">
+                <font-awesome-icon icon="fa-solid fa-home" class="material-icons"/>
+                <span class="text">Inicio</span>
+            </Link>
+            <Link class="button" :href="route('timeline_index')">
+                <font-awesome-icon icon="fa-solid fa-calendar-days" class="material-icons"/>
+                <span class="text">Cronograma</span>
+            </Link>
+            <Link class="button" :href="route('irrigation_index')">
+                <font-awesome-icon icon="fa-solid fa-leaf" class="material-icons"/>
+                <span class="text">Irrigação</span>
+            </Link>
+            <Link class="button" :href="route('history_index')">
+                <font-awesome-icon icon="fa-solid fa-clock-rotate-left" class="material-icons"/>
+                <span class="text">Historico</span>
+            </Link>
         </div>
 
         <div class="flex"></div>

@@ -1,66 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projeto Irrigago
+
+Este projeto é um sistema de integração dados do CLIMWAT e CROPWAT para calcular as necessidades hídricas das culturas, os requisitos de irrigação com base nos dados de solo, clima e cultura e ajustar automaticamente as necessidades e os cronogramas de irrigação com base em dados de tempo real. Esta solução envolve a extração de água do lençol freático, o monitoramento em tempo real das condições do solo e das plantas, e a aplicação precisa de água através de um sistema de irrigação por gotejamento.
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="" alt="image painel"/>
+  <img src="" alt="image-login"/>
+  <img src="" alt="image home"/>
+  <img src="" alt="image chat"/>
 </p>
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Requisitos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Antes de começar, certifique-se de ter as seguintes ferramentas instaladas:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [PHP](https://www.php.net/) (versão 8.1 ou superior)
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/) (versão 16 ou superior)
+- [NPM](https://www.npmjs.com/) (ou [Yarn](https://yarnpkg.com/))
+- [Laravel Herd](https://herd.laravel.com/windows) (Opcional)
+- [API GEMINI](https://ai.google.dev/?authuser=1)
 
-## Learning Laravel
+## Configuração do Ambiente
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1. Clonagem do Repositório
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+O projeto utiliza um repositório bare para controle de versão. Para clonar o repositório, siga estes passos:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Navegue até o diretório onde deseja clonar o projeto. No caso de um repositório bare, você pode utilizar o seguinte comando:
 
-## Laravel Sponsors
+    ```bash
+    git clone https://github.com/gabrielsooliveira/hackathon-cpgoias4.git
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. Navegue até o diretório do projeto clonado:
 
-### Premium Partners
+    ```bash
+    cd <diretorio-destino>
+    ```
+### 2. Instalação das Dependências
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Instale as dependências do Laravel e do Vue.js com os seguintes comandos:
 
-## Contributing
+1. Instale as dependências do backend (Laravel):
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    ```bash
+    composer install
+    ```
 
-## Code of Conduct
+2. Instale as dependências do frontend (Vue.js):
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    ```bash
+    npm install
+    ```
 
-## Security Vulnerabilities
+### 3. Configuração do Ambiente
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+1. Copie o arquivo `.env.example` para `.env`:
 
-## License
+    ```bash
+    cp .env.example .env
+    ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+2. Configure as variáveis de ambiente no arquivo `.env` conforme necessário. As variáveis principais a serem configuradas são `DB_CONNECTION`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`e as chaves das Api's utilizadas `CLIMAPI_CONSUMER_KEY` e `OPENCAGE_API_KEY`.
+
+3. Gere a chave de aplicação do Laravel:
+
+    ```bash
+    php artisan key:generate
+    ```
+
+4. Execute as migrações do banco de dados:
+
+    ```bash
+    php artisan migrate
+    ```
+
+### 4. Inicialização do Projeto
+#### Caso não esteja utilizando o Laravel Herd siga os dois passo, se não apenas inicialize o segundo passo para rodar o vite e fazer o front-end inicializar
+
+1. Inicie o servidor de desenvolvimento do Laravel:
+
+    ```bash
+    php artisan serve
+    ```
+
+2. Inicie o servidor de desenvolvimento do frontend (Vue.js):
+
+    ```bash
+    npm run dev
+    ```
+
+

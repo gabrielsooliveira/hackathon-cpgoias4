@@ -21,7 +21,7 @@ const props = defineProps({
     <div class="d-flex align-items-center text-center py-5 vh-100">
         <div class="form-signin w-lg-25 m-auto">
             <div class="card p-5">
-                <form @submit.prevent="form.post(route('login.store'))">
+                <form @submit.prevent="form.post(route('login_store'))">
                     <h1 class="h3 mb-3 fw-bold text-primary text-uppercase">painel de dashboard</h1>
                     <div v-if="props.flash.error" class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ props.flash.error }}
